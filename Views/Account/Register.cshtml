@@ -1,0 +1,44 @@
+﻿@model Forum.Models.RegisterModel
+@{
+    Layout = null;
+
+    var valMsg = new List<String>();
+    valMsg.Add(Html.ValidationMessageFor(model => model.Login).ToString().Split('>')[1].Split('<')[0]);
+    valMsg.Add(Html.ValidationMessageFor(model => model.Password).ToString().Split('>')[1].Split('<')[0]);
+    valMsg.Add(Html.ValidationMessageFor(model => model.ConfirmPassword).ToString().Split('>')[1].Split('<')[0]);
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+</head>
+<body>
+    <div> 
+        <form method="post" action="/Account/Register">
+            <div>
+                <label>Имя:</label>
+                @Html.TextBoxFor(model => model.Login, new { placeholder = "Введите логин"})<br />
+                <label class="validation-block">@valMsg[0]</label>
+            </div>
+            <div>
+                <label>Пароль:</label>
+                @Html.TextBoxFor(model => model.Password, new { placeholder = "Введите пароль" })<br />
+                <label class="validation-block">@valMsg[1]</label>
+            </div>
+            <div>
+                <label>Подтверждение пароля:</label>
+                @Html.TextBoxFor(model => model.ConfirmPassword, new { placeholder = "Введите пароль повторно" })<br />
+                <label class="validation-block">@valMsg[2]</label>
+            </div>
+            <div>
+                <label>Email:</label>
+                @Html.TextBoxFor(model => model.Email, new { placeholder = "Введите email" })<br />
+            </div>
+            <input type="submit" value="Отправить" />
+        </form>
+    </div>
+</body>
+</html>

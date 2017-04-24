@@ -1,0 +1,24 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Удаление записи</title>
+</head>
+<body>
+    <div> 
+        Вы действительно хотите удалить запись @ViewBag.id?
+        <form method="post" action="/Home/Delete/@ViewBag.id">
+            <input type="hidden" name="Url" value="@ViewBag.url" />
+            <input type="submit" value="Да" />
+        </form>
+        <form method="get" action="@ViewBag.url">
+            <input type="submit" value="Отмена" />
+        </form>
+    </div>
+</body>
+</html>

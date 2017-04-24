@@ -1,0 +1,31 @@
+﻿    <div> 
+        <h3>Сообщение</h3>
+        <table>
+            <tr>
+                <th>
+                    #
+                </th>
+                <th>
+                    Тема
+                </th>
+                <th>
+                    Автор
+                </th>
+            </tr>
+                @foreach (var t in ViewBag.Topics)
+                {
+                    <tr>
+                        <td>@t.ID</td>
+                        <td><a href="/Home/Topic/@t.ID">@t.Name</a></td>
+                        <td>@t.TopicStarter.Name</td>
+                    </tr>
+                }
+        </table>
+        <form method="get" action="/Home/AddTopic">
+            <input type="submit" value="Создать тему" />
+        </form>
+    </div>
+@section scripts
+{
+    <script type="text/javascript" src="/Content/js/base.js"></script>
+}

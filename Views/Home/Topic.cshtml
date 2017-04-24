@@ -1,0 +1,42 @@
+﻿@{
+    int i = 1;
+}
+<div>
+    <h3>Тема</h3>
+    <table border="1">
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Автор
+            </th>
+            <th>
+                Дата
+            </th>
+            <th>
+                Текст
+            </th>
+            <th>
+                Действия
+            </th>
+        </tr>
+        @foreach (var m in ViewBag.Messages)
+        {
+            <tr>
+                <td>@(i++)</td>
+                <td>@m.Author.Name</td>
+                <td>@m.CreatingDate</td>
+                <td>@m.Text</td>
+                <td>
+                    <a href="/Home/Edit/@m.ID">Редактировать</a>
+                    <a href="/Home/Delete/@m.ID">Удалить</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <form method="get" action="/Home/Add">
+        <input type="hidden" name="topicId" value="@ViewBag.TopicID" />
+        <input type="submit" value="Добавить" />
+    </form>
+</div>

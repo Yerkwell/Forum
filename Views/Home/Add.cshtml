@@ -1,0 +1,13 @@
+﻿    <div> 
+        <h3>Добавить сообщение</h3>
+        <form method="post">
+            <input type="hidden" name="TopicID" value="@ViewBag.TopicID" />
+            <label>Текст</label>
+            <textarea name="Text"></textarea>
+            <input type="submit" value="Отправить" />
+        </form>
+        <br />
+        <form method="get" action="/Home/Topic/@ViewBag.TopicID">
+            <input type="submit" value="Отмена"/>
+         </form>
+    </div>

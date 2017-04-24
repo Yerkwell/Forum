@@ -1,0 +1,49 @@
+﻿
+<div>
+    <h3>
+        Список пользователей
+    </h3>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    #
+                </th>
+                <th>
+                    Имя
+                </th>
+                <th>
+                    Сообщений
+                </th>
+                <th>
+                    Дата регистрации
+                </th>
+                <th>
+                    Последний визит
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var u in ViewBag.Users)
+            { 
+            <tr>
+                <td>
+                    @u.ID
+                </td>
+                <td>
+                    @u.Name
+                </td>
+                <td>
+                    @u.MessageCount
+                </td>
+                <td>
+                    @u.RegistrationDate
+                </td>
+                <td>
+                    @u.LastVisit
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,38 @@
+﻿@model Forum.Models.LoginModel
+@{
+    Layout = null;
+    var valMsg = new List<string>();
+    valMsg.Add(Html.ValidationMessageFor(model => model.Login).ToString().Split('>')[1].Split('<')[0]);
+    valMsg.Add(Html.ValidationMessageFor(model => model.Password).ToString().Split('>')[1].Split('<')[0]);
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    <div> 
+        <form method="post">
+            <div>
+                <label>Имя:</label>
+                @Html.TextBoxFor(model => model.Login, new { placeholder = "Введите имя" })<br />
+                <label class="validation-block">@valMsg[0]</label>
+            </div>
+            <div>
+            <label>Пароль:</label>
+                @Html.TextBoxFor(model => model.Password, new { placeholder = "Введите пароль" })<br />
+                <label class="validation-block">@valMsg[1]</label>
+            </div>
+            <div>
+                <label>Запомнить</label>
+                @Html.CheckBoxFor(model => model.RememberMe)
+            </div>
+            <input type="submit" value="Вход" />
+        </form>
+        <a href="/Account/Register">Регистрация</a>
+    </div>
+</body>
+</html>

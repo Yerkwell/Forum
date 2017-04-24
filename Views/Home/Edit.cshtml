@@ -1,0 +1,14 @@
+﻿@model Forum.Models.EditMessageModel
+<div>
+    <h3>Добавить сообщение</h3>
+    <form method="post">
+        @Html.HiddenFor(model => model.ID)
+        <label>Текст</label>
+        @Html.TextAreaFor(model => model.Text)
+        <input type="submit" value="Отправить" />
+    </form>
+    <br />
+    <form method="get" action="/Home/Topic/@ViewBag.TopicID">
+        <input type="submit" value="Отмена" />
+    </form>
+</div>
